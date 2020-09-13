@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
+import MenuItem from './MenuItem';
 import './Header.css'
 
 function Header() {
@@ -17,11 +18,22 @@ function Header() {
     <div className='header__searchBar'>
       <form>
       <input type="text" />
-      <SearchIcon/>
+      <div className='header__searchIcon'><SearchIcon/></div>
       </form>
     </div>
     <div className='header__rightOptions'>
-      <Link to='/'>Home</Link>
+      <Link to='/'>
+        <MenuItem 
+        topText='Hello, Marco' 
+        bottomText='Account & List'
+        />
+        </Link>
+        <Link to='/'>
+        <MenuItem 
+        topText='Returns' 
+        bottomText='& Orders'
+        />
+      </Link>
     </div>
   </div>
   );

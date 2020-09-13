@@ -32,19 +32,38 @@ html{
     min-width: 500px;
 }
 
+
 .header__searchBar input{
     height:40px;
     width:100%;
-    border-radius: 5px;
     border:none
 }
 
 .header__searchBar form{
     display: grid;
-    grid-template-columns: auto 1px ;
+    grid-template-columns: auto 50px ;
+    align-items: center;
+}
+
+.header__searchBar input[type=text]:focus { 
+    outline: none;
+  }
+
+.header__searchIcon{
+    display:grid;
+    align-items: center;
+    justify-items: center;
+    color:black;
+    background-color: orange;
+    height:42px;
 }
 
 .header__rightOptions{
-    background-color: gold;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.header__menuItem{
+    color: blue !important;
 }
 
