@@ -63,6 +63,12 @@ html{
     grid-template-columns: auto auto 100px;
 }
 
+.header__cartItems{
+    font-size:14px;
+    font-weight: bold;
+}
+
+
 .header__menuItem{
     color: blue !important;
 }

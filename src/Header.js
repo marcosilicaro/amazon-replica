@@ -38,7 +38,7 @@ function Header() {
       <Link style={{ textDecoration: 'none' }} to='/'>
         <div className='header__cart'>
           <ShoppingBasketIcon/>
-          <div>0</div>
+          <div className='header__cartItems'>0</div>
         </div>
       </Link>
     </div>

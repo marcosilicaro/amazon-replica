@@ -5,7 +5,6 @@ import LoginPage from './LoginPage'
 import Header from './Header'
 import {BrowserRouter, Route} from 'react-router-dom'
 
-{/* https://www.youtube.com/watch?v=1_IYL9ZMR_Y&t=2795s */}
 
 function App() {
   return (

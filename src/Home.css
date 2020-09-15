@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+}
+
+.home__banner{
+    width:100%;
+    background-color:#2e3192;
+    height:600px;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
+}
+
