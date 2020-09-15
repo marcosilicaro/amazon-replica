@@ -4,8 +4,8 @@ import './MenuItem.css'
 function MenuItem(props) {
   return (
   <div className='menuItem'>
-    <div>{props.topText}</div>
-    <div>{props.bottomText}</div>
+    <div className='menuItem__topText'>{props.topText}</div>
+    <div className='menuItem__bottomText'>{props.bottomText}</div>
   </div>
   );
 }

@@ -60,7 +60,7 @@ html{
 
 .header__rightOptions{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto 100px;
 }
 
 .header__menuItem{

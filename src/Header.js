@@ -22,16 +22,22 @@ function Header() {
       </form>
     </div>
     <div className='header__rightOptions'>
-      <Link to='/'>
+      <Link style={{ textDecoration: 'none'}} to='/'>
         <MenuItem 
         topText='Hello, Marco' 
         bottomText='Account & List'
         />
         </Link>
-        <Link to='/'>
+        <Link style={{ textDecoration: 'none' }} to='/'>
         <MenuItem 
         topText='Returns' 
         bottomText='& Orders'
+        />
+      </Link>
+      <Link style={{ textDecoration: 'none' }} to='/'>
+        <MenuItem 
+        topText='Cart'
+        bottomText='X Items'
         />
       </Link>
     </div>

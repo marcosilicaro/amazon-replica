@@ -1,4 +1,20 @@
+* {
+    margin: 0;
+}
+
 .menuItem{
     display: grid;
     grid-template-columns: 1fr ;
 }
+
+.menuItem__topText{
+    color:grey;
+    font-size:13px;
+}
+
+.menuItem__bottomText{
+    color:white;
+    font-size:14px;
+    font-weight: bold;
+}
+
