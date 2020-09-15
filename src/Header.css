@@ -67,3 +67,10 @@ html{
     color: blue !important;
 }
 
+.header__cart{
+    display: grid;
+    grid-template-columns: 45px auto;
+    color:white;
+    align-items:center
+}
+

@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import SearchIcon from '@material-ui/icons/Search';
 import MenuItem from './MenuItem';
 import './Header.css'
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
 function Header() {
   return (
@@ -28,17 +29,17 @@ function Header() {
         bottomText='Account & List'
         />
         </Link>
-        <Link style={{ textDecoration: 'none' }} to='/'>
+      <Link style={{ textDecoration: 'none' }} to='/'>
         <MenuItem 
         topText='Returns' 
         bottomText='& Orders'
         />
       </Link>
       <Link style={{ textDecoration: 'none' }} to='/'>
-        <MenuItem 
-        topText='Cart'
-        bottomText='X Items'
-        />
+        <div className='header__cart'>
+          <ShoppingBasketIcon/>
+          <div>0</div>
+        </div>
       </Link>
     </div>
   </div>
