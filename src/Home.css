@@ -3,9 +3,12 @@
 }
 
 .home__banner{
-    width:100%;
+    width:1440px;
     background-color:#2e3192;
     height:600px;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
 }
 
+.home__banner img{
+   width:1440px
+}
