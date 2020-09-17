@@ -1,3 +1,26 @@
-.product__container{
-    background-color: green;
+.product__container {
+  background-color: green;
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 5px;
+}
+
+.product__price {
+  font-weight: bold;
+}
+
+.product__rating {
+  display: grid;
+  grid-template-columns: 25px 25px 25px 25px 25px;
+  grid-gap: 0px;
+  margin-top: -3px;
+  margin-bottom: 5px;
+}
+
+.product__img {
+  height: 300px;
+}
+
+.product__button {
+  width: 100px;
 }

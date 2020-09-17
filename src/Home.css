@@ -1,14 +1,15 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 
-.home__banner{
-    width:1440px;
-    background-color:#2e3192;
-    height:600px;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))
+.home__image {
+  width: auto;
+  background-color: #2e3192;
+  height: 600px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-.home__banner img{
-   width:1440px
+.home__doubleRow {
+  display: grid;
+  grid-template-columns: auto auto;
 }
