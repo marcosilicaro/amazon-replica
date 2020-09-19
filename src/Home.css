@@ -3,13 +3,14 @@
 }
 
 .home__image {
-  width: auto;
+  max-width: 1440px;
   background-color: #2e3192;
-  height: 600px;
+  height: auto;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
 .home__doubleRow {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 48vw 48vw;
+  justify-content: space-around;
 }

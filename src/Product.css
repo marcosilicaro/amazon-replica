@@ -1,8 +1,11 @@
 .product__container {
-  background-color: green;
+  background-color: grey;
   display: grid;
   grid-template-columns: auto;
+  grid-template-rows: 6.6vh auto auto auto auto;
   grid-row-gap: 5px;
+  padding:15px
+
 }
 
 .product__price {
@@ -22,5 +25,13 @@
 }
 
 .product__button {
-  width: 100px;
+  width: fit-content;
+  height:auto;
+  padding:6px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 19px;
+  background-color:orange;
+  border-color: #a88734 #9c7e31 #846a29;
+  margin:25px 0 0 0;
+  border-radius: 5px
 }

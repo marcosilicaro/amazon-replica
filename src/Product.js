@@ -13,8 +13,12 @@ function Product(props) {
             return <p>⭐</p>;
           })}
       </p>
-      <img alt="product " src={props.img} className="product__img" />
-      <button className="product__button">Add to basket</button>
+      <center>
+        <img alt="product" src={props.img} className="product__img" />
+        <br />
+        <button className="product__button">Add to basket</button>
+      </center>
+
     </div>
   );
 }
