@@ -2,15 +2,38 @@
   margin: 0;
 }
 
+:root{
+  --row-width: 99vw;
+}
+
+
+.home__banner{
+  background-color:lightgray;
+}
+
 .home__image {
   max-width: 1440px;
   background-color: #2e3192;
-  height: auto;
+  height: 500px;
+  object-fit: cover;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  z-index: -1;
 }
 
 .home__doubleRow {
   display: grid;
   grid-template-columns: 48vw 48vw;
   justify-content: space-around;
+  margin-top: -30vh;
+  z-index: 1;
+}
+
+.home__tripleRow {
+  display: grid;
+  width:var(--row-width);
+  margin-left:0.5vw;
+  grid-template-columns: 32vw 32vw 32vw;
+  justify-content: space-around;
+  margin-top: 2vh;
+  z-index: 1;
 }
