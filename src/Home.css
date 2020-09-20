@@ -3,12 +3,13 @@
 }
 
 :root{
-  --row-width: 99vw;
+  --doubleRow-width: 99vw;
 }
 
 
 .home__banner{
   background-color:lightgray;
+  height:500vh
 }
 
 .home__image {
@@ -30,9 +31,19 @@
 
 .home__tripleRow {
   display: grid;
-  width:var(--row-width);
+  width:var(--doubleRow-width);
   margin-left:0.5vw;
   grid-template-columns: 32vw 32vw 32vw;
+  justify-content: space-around;
+  margin-top: 2vh;
+  z-index: 1;
+  font-size: 14px;
+}
+
+.home__singleRow {
+  display: grid;
+  margin-left:0vw;
+  grid-template-columns: 98vw;
   justify-content: space-around;
   margin-top: 2vh;
   z-index: 1;

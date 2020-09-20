@@ -45,6 +45,12 @@ function Home() {
           img="https://images-na.ssl-images-amazon.com/images/I/81x2KmFnueL._AC_SX679_.jpg"
         />
       </div>
+      <div className="home__singleRow"><Product
+        title="Dell S-Series 27-Inch Screen LED-Lit Gaming Monitor (S2719DGF); QHD (2560 x 1440) up to 155 Hz; 16:9; 1ms Response time; HDMI 2.0; DP 1.2; USB; FreeSync; LED; Height Adjust, Tilt, Swivel & Pivot"
+        rating={5}
+        price={287.96}
+        img="https://images-na.ssl-images-amazon.com/images/I/81ONemBAVtL._AC_SX679_.jpg"
+      /></div>
     </div>
   );
 }

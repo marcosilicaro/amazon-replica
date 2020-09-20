@@ -7,7 +7,11 @@
   padding:15px;
   z-index:1;
   align-content: start ;
+  height:70vh;
+}
 
+.product__title{
+  height: 50px;
 }
 
 .product__price {
@@ -17,9 +21,7 @@
 .product__rating {
   display: grid;
   grid-template-columns: 25px 25px 25px 25px 25px;
-  grid-gap: 0px;
-  margin-top: -3px;
-  margin-bottom: 5px;
+  grid-gap: 0px;  
 }
 
 .product__img {
@@ -34,6 +36,7 @@
   font-size: 19px;
   background-color:orange;
   border-color: #a88734 #9c7e31 #846a29;
-  margin:25px 0 0 0;
-  border-radius: 5px
+  margin-top:25px;
+  border-radius: 5px;
+  margin-bottom: -100px !important
 }
