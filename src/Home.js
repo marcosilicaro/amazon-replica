@@ -3,13 +3,16 @@ import "./Home.css";
 import Product from "./Product";
 
 function Home() {
+
   return (
     <div className="home__banner">
-      <div className="home__imageContainer"><img
-        src="https://i.imgur.com/KWztOQO.png"
-        alt="banner"
-        className="home__image"
-      /></div>
+      <div className="home__imageContainer">
+        <img
+          src="https://i.imgur.com/KWztOQO.png"
+          alt="banner"
+          className="home__image"
+        />
+      </div>
 
       <div className="home__doubleRow">
         <Product
