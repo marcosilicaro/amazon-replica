@@ -24,7 +24,7 @@ class Product extends Component {
             onClick={() => (
               this.props.addItemToBasket()
             )}
-          >Add To basket</button>
+          >Add to basket</button>
         </center>
 
       </div>
