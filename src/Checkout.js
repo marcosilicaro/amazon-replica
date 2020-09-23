@@ -1,11 +1,15 @@
-import React from 'react';
+import React from "react";
+import "./Checkout.css";
+import { connect } from "react-redux";
 
-function Checkout() {
-  return (
-  <div>
-    Checkout
-  </div>
-  );
+function Checkout(props) {
+  return <div>Number of items in checkout: {props.items}</div>;
 }
 
-export default Checkout;
+const mapStateToProps = (state) => {
+  return {
+    items: state.items,
+  };
+};
+
+export default connect(mapStateToProps)(Checkout);

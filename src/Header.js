@@ -1,49 +1,44 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
-import SearchIcon from '@material-ui/icons/Search';
-import MenuItem from './MenuItem';
-import './Header.css'
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import { connect } from 'react-redux'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import SearchIcon from "@material-ui/icons/Search";
+import MenuItem from "./MenuItem";
+import "./Header.css";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { connect } from "react-redux";
 
 class Header extends Component {
-
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
-      <div class='header__navbar'>
-        <div className='header__logoMenu'>
-          <Link to='/'>
+      <div class="header__navbar">
+        <div className="header__logoMenu">
+          <Link to="/">
             <img
-              className='header__logo'
-              alt='amazon-logo'
-              src='https://pngimg.com/uploads/amazon/amazon_PNG25.png'></img>
+              className="header__logo"
+              alt="amazon-logo"
+              src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
+            ></img>
           </Link>
         </div>
-        <div className='header__searchBar'>
+        <div className="header__searchBar">
           <form>
             <input type="text" />
-            <div className='header__searchIcon'><SearchIcon /></div>
+            <div className="header__searchIcon">
+              <SearchIcon />
+            </div>
           </form>
         </div>
-        <div className='header__rightOptions'>
-          <Link style={{ textDecoration: 'none' }} to='/'>
-            <MenuItem
-              topText='Hello, Marco'
-              bottomText='Account & List'
-            />
+        <div className="header__rightOptions">
+          <Link style={{ textDecoration: "none" }} to="/">
+            <MenuItem topText="Hello, Marco" bottomText="Account & List" />
           </Link>
-          <Link style={{ textDecoration: 'none' }} to='/'>
-            <MenuItem
-              topText='Returns'
-              bottomText='& Orders'
-            />
+          <Link style={{ textDecoration: "none" }} to="/">
+            <MenuItem topText="Returns" bottomText="& Orders" />
           </Link>
-          <Link style={{ textDecoration: 'none' }} to='/'>
-            <div className='header__cart'>
+          <Link style={{ textDecoration: "none" }} to="/checkout">
+            <div className="header__cart">
               <ShoppingBasketIcon />
-              <div
-                className='header__cartItems'>{this.props.items}</div>
+              <div className="header__cartItems">{this.props.items}</div>
             </div>
           </Link>
         </div>
@@ -52,8 +47,8 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { items: state.items }
-}
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
 
 export default connect(mapStateToProps)(Header);
