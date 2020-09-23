@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import "./Product.css";
-import { addItemToBasket } from './actions/index'
-import { connect } from 'react-redux'
+import { addItemToBasket } from "./actions/index";
+import { connect } from "react-redux";
 
 class Product extends Component {
   render() {
@@ -21,21 +21,27 @@ class Product extends Component {
           <br />
           <button
             className="product__button"
-            onClick={() => (
-              this.props.addItemToBasket()
-            )}
-          >Add To basket</button>
+            onClick={() =>
+              this.props.addItemToBasket(
+                this.props.title,
+                this.props.price,
+                this.props.rating,
+                this.props.img
+              )
+            }
+          >
+            Add To basket
+          </button>
         </center>
-
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { items: state.items }
-}
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
 
 export default connect(mapStateToProps, {
-  addItemToBasket: addItemToBasket
+  addItemToBasket: addItemToBasket,
 })(Product);
