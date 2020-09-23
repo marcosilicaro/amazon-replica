@@ -8,7 +8,6 @@ import { connect } from "react-redux";
 
 class Header extends Component {
   render() {
-    console.log(this.props);
     return (
       <div class="header__navbar">
         <div className="header__logoMenu">

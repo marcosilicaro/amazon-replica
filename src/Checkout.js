@@ -6,7 +6,6 @@ const listProducts = (products) => {
   if (products.length > 0) {
     products.map((i) => {
       console.log(i.title);
-      return <p>Hola</p>;
     });
   } else {
     return <p>No items in the checkout</p>;
