@@ -1,25 +1,22 @@
 import React from "react";
 import "./Checkout.css";
 import { connect } from "react-redux";
+import Product from "./Product";
 
-const listProducts = (products) => {
-  if (products.length > 0) {
-    products.map((i) => {
-      console.log(i.title);
-    });
-  } else {
-    return <p>No items in the checkout</p>;
+class Checkout extends React.Component {
+  render() {
+    return this.props.products.map(product => (
+      <div>
+        <Product
+          title={product.title}
+          rating={product.rating}
+          price={product.price}
+          img={product.img}
+        />
+      </div>
+    )
+    );
   }
-};
-
-function Checkout(props) {
-  return (
-    <div>
-      <p>Number of items in checkout: {props.items}</p>
-      <br />
-      <p>List of products {listProducts(props.products)}</p>
-    </div>
-  );
 }
 
 const mapStateToProps = (state) => {
