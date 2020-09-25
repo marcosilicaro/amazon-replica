@@ -8,50 +8,64 @@ import { connect } from "react-redux";
 
 class Product extends Component {
   render() {
-    const returnButton = () => {
-      if (!this.props.place) {
-        return (
-          <button
-            className="product__button"
-            onClick={() =>
-              this.props.addItemToBasket(
-                this.props.title,
-                this.props.price,
-                this.props.rating,
-                this.props.img
-              )
-            }
-          >Add to Basket</button>
-        )
-      } else {
-        return (<button
-          className="product__button"
-          onClick={() =>
-            this.props.eraseItemFromBasket(
-              this.props.title
-            )
-          }
-        >Delete</button>)
-      }
+    if (!this.props.place) {
+      return (
+        <div className="product__container">
+          <p className="product__title">{this.props.title}</p>
+          <p className="product__price">{this.props.price}</p>
+          <p className="product__rating">
+            {Array(this.props.rating)
+              .fill()
+              .map(() => {
+                return <p>⭐</p>;
+              })}
+          </p>
+          <center>
+            <img alt="product" src={this.props.img} className="product__img" />
+            <br />
+            <button
+              className="product__button"
+              onClick={() =>
+                this.props.addItemToBasket(
+                  this.props.title,
+                  this.props.price,
+                  this.props.rating,
+                  this.props.img
+                )
+              }
+            >Add to Basket</button>
+          </center>
+        </div>
+      )
+    } else {
+      return (
+        <div className="product__container">
+          <p className="product__title">{this.props.title}</p>
+          <p className="product__price">{this.props.price}</p>
+          <p className="product__rating">
+            {Array(this.props.rating)
+              .fill()
+              .map(() => {
+                return <p>⭐</p>;
+              })}
+          </p>
+          <center>
+            <img alt="product" src={this.props.img} className="product__img" />
+            <br />
+            <button
+              className="product__button"
+              onClick={() =>
+                this.props.eraseItemFromBasket(
+                  this.props.title
+                )
+              }
+            >Delete</button>
+          </center>
+        </div>
+      );
     }
-    return (
-      <div className="product__container">
-        <p className="product__title">{this.props.title}</p>
-        <p className="product__price">{this.props.price}</p>
-        <p className="product__rating">
-          {Array(this.props.rating)
-            .fill()
-            .map(() => {
-              return <p>⭐</p>;
-            })}
-        </p>
-        <center>
-          <img alt="product" src={this.props.img} className="product__img" />
-          <br />
-          {returnButton()}
-        </center>
-      </div>
-    );
+
+
   }
 }
 

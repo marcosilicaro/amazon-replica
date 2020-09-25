@@ -6,7 +6,8 @@ import Product from "./Product";
 class Checkout extends React.Component {
   render() {
     return this.props.products.map(product => (
-      <div>
+      <div className="checkout__rowsContainer">
+
         <Product
           title={product.title}
           rating={product.rating}
@@ -14,6 +15,7 @@ class Checkout extends React.Component {
           img={product.img}
           place='basket'
         />
+
       </div>
     )
     );
