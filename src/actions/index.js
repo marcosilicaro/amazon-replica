@@ -9,3 +9,12 @@ export const addItemToBasket = (title, price, rating, img) => {
     },
   };
 };
+
+export const eraseItemFromBasket = (title) => {
+  return {
+    type: "REMOVE_ITEM",
+    payload: {
+      title: title
+    },
+  };
+};

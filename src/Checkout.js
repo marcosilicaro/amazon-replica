@@ -12,6 +12,7 @@ class Checkout extends React.Component {
           rating={product.rating}
           price={product.price}
           img={product.img}
+          place='basket'
         />
       </div>
     )

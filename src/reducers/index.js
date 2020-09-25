@@ -9,6 +9,13 @@ const itemsInBasketReducer = (items = 0, action) => {
 };
 
 const productsInBasketReducer = (products = [], action) => {
+  if (action.type === "REMOVE_ITEM") {
+
+    products = products.filter(product => {
+      return product.title !== action.payload.title
+    })
+    console.log(products)
+  }
   if (action.type === "ADD_ITEM") {
     return [...products, action.payload];
   } else {
