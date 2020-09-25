@@ -37,7 +37,7 @@ class Header extends Component {
           <Link style={{ textDecoration: "none" }} to="/checkout">
             <div className="header__cart">
               <ShoppingBasketIcon />
-              <div className="header__cartItems">{this.props.items}</div>
+              <div className="header__cartItems">{this.props.products.length}</div>
             </div>
           </Link>
         </div>
@@ -47,7 +47,9 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { items: state.items };
+  return {
+    products: state.products,
+  };
 };
 
 export default connect(mapStateToProps)(Header);

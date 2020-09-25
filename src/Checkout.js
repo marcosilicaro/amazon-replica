@@ -22,7 +22,6 @@ class Checkout extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items,
     products: state.products,
   };
 };

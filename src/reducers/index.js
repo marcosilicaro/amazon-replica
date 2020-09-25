@@ -1,13 +1,5 @@
 import { combineReducers } from "redux";
 
-const itemsInBasketReducer = (items = 0, action) => {
-  if (action.type === "ADD_ITEM") {
-    return items + 1;
-  } else {
-    return items;
-  }
-};
-
 const productsInBasketReducer = (products = [], action) => {
   if (action.type === "REMOVE_ITEM") {
 
@@ -24,6 +16,5 @@ const productsInBasketReducer = (products = [], action) => {
 };
 
 export default combineReducers({
-  items: itemsInBasketReducer,
   products: productsInBasketReducer,
 });
