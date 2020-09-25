@@ -49,18 +49,17 @@ class Product extends Component {
                 return <p>⭐</p>;
               })}
           </p>
-          <center>
-            <img alt="product" src={this.props.img} className="product__img" />
-            <br />
-            <button
-              className="product__button"
-              onClick={() =>
-                this.props.eraseItemFromBasket(
-                  this.props.title
-                )
-              }
-            >Delete</button>
-          </center>
+
+          <img alt="product" src={this.props.img} className="product__img" />
+          <br />
+          <button
+            className="product__button"
+            onClick={() =>
+              this.props.eraseItemFromBasket(
+                this.props.title
+              )
+            }
+          >Delete</button>
         </div>
       );
     }
