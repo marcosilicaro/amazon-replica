@@ -2,7 +2,6 @@ import { combineReducers } from "redux";
 
 const productsInBasketReducer = (products = [], action) => {
   if (action.type === "REMOVE_ITEM") {
-
     products = products.filter(product => {
       return product.title !== action.payload.title
     })
@@ -13,6 +12,7 @@ const productsInBasketReducer = (products = [], action) => {
   } else {
     return products;
   }
+
 };
 
 export default combineReducers({

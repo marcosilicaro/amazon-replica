@@ -1,0 +1,22 @@
+.subtotal__title{
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-column-gap: 1vw;
+}
+
+.subtotal__button {
+  width: 100%;
+  height: auto;
+  padding: 6px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 19px;
+  background-color: orange;
+  border-color: #a88734 #9c7e31 #846a29;
+  margin-top: 25px;
+  border-radius: 5px;
+}
+
+.subtotal__number{
+    font-weight: bold;
+}

@@ -6,6 +6,7 @@ export const addItemToBasket = (title, price, rating, img) => {
       price: price,
       rating: rating,
       img: img,
+      quantity: 1,
     },
   };
 };

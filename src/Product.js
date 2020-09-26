@@ -7,6 +7,12 @@ import { connect } from "react-redux";
 
 
 class Product extends Component {
+
+  amountOfProductCalculation() {
+    let suma = document.getElementById("productInBasket__amountOfProduct").value
+    console.log(suma)
+  }
+
   render() {
     if (!this.props.place) {
       return (
@@ -53,6 +59,21 @@ class Product extends Component {
                   return <p>⭐</p>;
                 })}
             </p>
+            <div className='productInBasket__amountOfProduct'>
+              <select name="productInBasket__amountOfProduct" id="productInBasket__amountOfProduct">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4 </option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10+">10+</option>
+              </select>
+
+            </div>
             <button
               className="product__button"
               onClick={() =>
