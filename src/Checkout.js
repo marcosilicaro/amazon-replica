@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import Product from "./Product";
 import Subtotal from "./Subtotal";
 
-
-
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
@@ -18,10 +16,9 @@ class Checkout extends React.Component {
     return suma
   }
 
-
   render() {
-
     let sum = 0;
+    console.log(this.props.products)
     return (
       <div className='checkout'>
         <div className='checkout__container'>
