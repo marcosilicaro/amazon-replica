@@ -47,7 +47,7 @@ class Checkout extends React.Component {
         <div className='checkout__subtotal'>
 
           <Subtotal
-            subtotal={this.subtotalCalculation(this.props.products)}
+            subtotal={this.subtotalCalculation(this.props.products).toFixed(2)}
           />
         </div>
       </div>
