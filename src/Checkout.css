@@ -10,6 +10,11 @@ html {
 
 .checkout__rowsContainer {
   height: fit-content;
-  padding-bottom: 100px;
   width: 100%;
+}
+
+.title{
+  font-size:30px;
+  font-weight: bold;
+  padding:20px;
 }

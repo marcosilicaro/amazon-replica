@@ -10,6 +10,25 @@
   height: fit-content;
 }
 
+.productInBasket__container {
+  background-color: grey;
+  display: grid;
+  grid-template-columns: 16vw auto;
+  grid-row-gap: 5px;
+  padding: 15px;
+  z-index: 1;
+  align-content: start;
+  height: fit-content;
+}
+
+.productInBasket__description .product__title{
+  height:auto !important
+}
+
+.productInBasket__img{
+  width:14vw
+}
+
 .product__title {
   height: 50px;
 }
