@@ -6,7 +6,6 @@ export const addItemToBasket = (title, price, rating, img) => {
       price: price,
       rating: rating,
       img: img,
-      quantity: 1,
     },
   };
 };
@@ -19,3 +18,4 @@ export const eraseItemFromBasket = (title) => {
     },
   };
 };
+
