@@ -1,11 +1,32 @@
 .login{
     display: grid;
-    grid-template-columns: 50vw;
-    width: max-content;
-    background-color: lightgray;
-    justify-items: center;
+    width:100%;
+    justify-content: center;
 }
 
 .login img {
     width: 200px;
+}
+
+.login__container{
+margin-top:3vh;
+background-color: lightgray;
+width: max-content;
+display: grid;
+grid-template-columns: 50vw;
+justify-items: center;
+}
+
+.login__form form{
+background-color: lightgray;
+display: grid;
+grid-template-columns: 1fr;
+}
+
+.login__signInButton {
+    padding: 5px
+}
+
+.login__createAccountButton{
+    padding: 5px
 }

@@ -1,30 +1,53 @@
 import React, { useState } from 'react';
 import "./LoginPage.css";
+import { auth } from './firebase'
+import { useHistory } from 'react-router-dom'
 
 
 const LoginPage = () => {
+  const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value)
+  const signIn = (email, password, e) => {
+    e.preventDefault()
+    const promise = auth.signInWithEmailAndPassword(email, password)
+    promise.catch(e => console.log(e.message)).then(history.push('/'))
   }
 
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value)
+  const createAccount = (email, password, e) => {
+    e.preventDefault()
+    const promise = auth.createUserWithEmailAndPassword(email, password)
+    promise.catch(e => console.log(e.message))
   }
 
   return (
     <div className='login'>
       <div className='login__container'>
+
         <img
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
           className='login__logo'
         />
         <div className='login__form'>
+          <h2>Sign In</h2>
           <form>
-            <label>Email: <input type='text' onChange={handleChangeEmail} value={email} /></label>
-            <label>Password: <input type='text' onChange={handleChangePassword} value={password} /></label>
+            <label><p>Email: </p><input type='text' onChange={e => setEmail(e.target.value)} value={email} /></label>
+            <label><p>Password: </p><input type='text' onChange={e => setPassword(e.target.value)} value={password} /></label>
+            <button
+              className='login__signInButton'
+              onClick={e => signIn(email, password, e)}
+            >
+              Sign In
+            </button>
+            <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+            <button
+              type='button'
+              className='login__createAccountButton'
+              onClick={e => createAccount(email, password, e)}
+            >
+              Create your Amazon account
+            </button>
           </form>
         </div>
       </div>
