@@ -1,0 +1,11 @@
+.login{
+    display: grid;
+    grid-template-columns: 50vw;
+    width: max-content;
+    background-color: lightgray;
+    justify-items: center;
+}
+
+.login img {
+    width: 200px;
+}
