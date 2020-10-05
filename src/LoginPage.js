@@ -9,6 +9,25 @@ const LoginPage = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
+  const validate = (email, password, e) => {
+    const errors = {}
+
+    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+      console.log('bien escrito el email')
+      signIn(email, password, e)
+    } else {
+      e.preventDefault()
+      errors.email = 'You must write your email correctly'
+      console.log(errors.email)
+    }
+
+    if (!password) {
+      e.preventDefault()
+      errors.password = 'You must write your password correctly'
+      console.log(errors.password)
+    }
+  }
+
   const signIn = (email, password, e) => {
     e.preventDefault()
     const promise = auth.signInWithEmailAndPassword(email, password)
@@ -24,7 +43,6 @@ const LoginPage = () => {
   return (
     <div className='login'>
       <div className='login__container'>
-
         <img
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
           className='login__logo'
@@ -36,7 +54,9 @@ const LoginPage = () => {
             <label><p>Password: </p><input type='text' onChange={e => setPassword(e.target.value)} value={password} /></label>
             <button
               className='login__signInButton'
-              onClick={e => signIn(email, password, e)}
+              onClick={e => {
+                validate(email, password, e)
+              }}
             >
               Sign In
             </button>

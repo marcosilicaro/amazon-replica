@@ -28,10 +28,10 @@ class Header extends Component {
           </form>
         </div>
         <div className="header__rightOptions">
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link style={{ textDecoration: "none" }} to="/login">
             <MenuItem topText="Hello, Marco" bottomText="Account & List" />
           </Link>
-          <Link style={{ textDecoration: "none" }} to="/">
+          <Link style={{ textDecoration: "none" }} to="/login">
             <MenuItem topText="Returns" bottomText="& Orders" />
           </Link>
           <Link style={{ textDecoration: "none" }} to="/checkout">
