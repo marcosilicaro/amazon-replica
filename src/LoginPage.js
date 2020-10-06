@@ -8,10 +8,9 @@ const LoginPage = () => {
   const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  let errors = {
-    email: '',
-    password: ''
-  }
+  const [isEmailWrong, setisEmailWrong] = useState(false)
+  const [isPasswordWrong, setisPasswordWrong] = useState(false)
+
 
   const validate = (email, password, e) => {
 
@@ -23,13 +22,10 @@ const LoginPage = () => {
       signIn(email, password, e)
     } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) == false) {
       e.preventDefault()
-      errors.email = 'You must write your email correctly'
-      errors.display = 'none'
-      console.log(errors.email)
+      setisEmailWrong(true)
     } else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password) == false) {
       e.preventDefault()
-      errors.email = 'You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter'
-      console.log(errors.email)
+      setisPasswordWrong(true)
     }
   }
 
@@ -57,7 +53,11 @@ const LoginPage = () => {
           <h2>Sign In</h2>
           <form>
             <label>
-              <p >Email:</p>
+              <p>Email:
+                <p className={isEmailWrong === false ? 'hidden' : 'red'}>
+                  You must write your email correctly
+                </p>
+              </p>
               <input
                 type='text'
                 name='email'
@@ -67,7 +67,11 @@ const LoginPage = () => {
                 value={email} />
             </label>
             <label>
-              <p>Password: </p>
+              <p>Password:
+                <p className={isPasswordWrong === false ? 'hidden' : 'red'}>
+                  You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter
+                </p>
+              </p>
               <input
                 type='text'
                 name='password'

@@ -30,3 +30,11 @@ grid-template-columns: 1fr;
 .login__createAccountButton{
     padding: 5px
 }
+
+.hidden{
+    display: none
+}
+
+.red{
+    color: red
+}
