@@ -8,23 +8,28 @@ const LoginPage = () => {
   const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  let errors = {
+    email: '',
+    password: ''
+  }
 
   const validate = (email, password, e) => {
-    const errors = {}
 
-    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
-      console.log('bien escrito el email')
+    if (
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) &&
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
+    ) {
+      console.log('bien escrito el email y password')
       signIn(email, password, e)
-    } else {
+    } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) == false) {
       e.preventDefault()
       errors.email = 'You must write your email correctly'
+      errors.display = 'none'
       console.log(errors.email)
-    }
-
-    if (!password) {
+    } else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password) == false) {
       e.preventDefault()
-      errors.password = 'You must write your password correctly'
-      console.log(errors.password)
+      errors.email = 'You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter'
+      console.log(errors.email)
     }
   }
 
@@ -40,6 +45,7 @@ const LoginPage = () => {
     promise.catch(e => console.log(e.message))
   }
 
+
   return (
     <div className='login'>
       <div className='login__container'>
@@ -50,8 +56,24 @@ const LoginPage = () => {
         <div className='login__form'>
           <h2>Sign In</h2>
           <form>
-            <label><p>Email: </p><input type='text' onChange={e => setEmail(e.target.value)} value={email} /></label>
-            <label><p>Password: </p><input type='text' onChange={e => setPassword(e.target.value)} value={password} /></label>
+            <label>
+              <p >Email:</p>
+              <input
+                type='text'
+                name='email'
+                onChange={e => {
+                  setEmail(e.target.value)
+                }}
+                value={email} />
+            </label>
+            <label>
+              <p>Password: </p>
+              <input
+                type='text'
+                name='password'
+                onChange={e => setPassword(e.target.value)}
+                value={password} />
+            </label>
             <button
               className='login__signInButton'
               onClick={e => {
