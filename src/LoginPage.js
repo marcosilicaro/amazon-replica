@@ -8,37 +8,56 @@ const LoginPage = () => {
   const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const [isEmailWrong, setisEmailWrong] = useState(false)
-  const [isPasswordWrong, setisPasswordWrong] = useState(false)
+  const [isEmailSyntaxWrong, setisEmailSyntaxWrong] = useState(false)
+  const [isPasswordSyntaxWrong, setisPasswordSyntaxWrong] = useState(false)
 
 
-  const validate = (email, password, e) => {
+  const validateAndSignIn = (email, password, e) => {
 
-    if (
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) &&
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
-    ) {
-      console.log('bien escrito el email y password')
+    const isEmailSyntaxGood = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+    const isPasswordSyntaxGood = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
+
+    if (isEmailSyntaxGood && isPasswordSyntaxGood) {
       signIn(email, password, e)
-    } else if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email) == false) {
+    } else if (isEmailSyntaxGood === false) {
       e.preventDefault()
-      setisEmailWrong(true)
-    } else if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password) == false) {
+      setisEmailSyntaxWrong(true)
+    } else if (isPasswordSyntaxGood === false) {
       e.preventDefault()
-      setisPasswordWrong(true)
+      setisEmailSyntaxWrong(false)
+      setisPasswordSyntaxWrong(true)
     }
   }
 
   const signIn = (email, password, e) => {
     e.preventDefault()
     const promise = auth.signInWithEmailAndPassword(email, password)
-    promise.catch(e => console.log(e.message)).then(history.push('/'))
+    promise.then(
+      respuesta => {
+        history.push('/')
+      },
+      error => console.log(error.message)
+    )
   }
 
   const createAccount = (email, password, e) => {
     e.preventDefault()
-    const promise = auth.createUserWithEmailAndPassword(email, password)
-    promise.catch(e => console.log(e.message))
+    const isEmailSyntaxGood = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+    const isPasswordSyntaxGood = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)
+
+    if (isEmailSyntaxGood && isPasswordSyntaxGood) {
+      const promise = auth.createUserWithEmailAndPassword(email, password)
+      promise.catch(e => console.log(e.message))
+      signIn(email, password, e)
+    } else if (isEmailSyntaxGood == false) {
+      e.preventDefault()
+      setisEmailSyntaxWrong(true)
+    } else if (isPasswordSyntaxGood == false) {
+      e.preventDefault()
+      setisEmailSyntaxWrong(false)
+      setisPasswordSyntaxWrong(true)
+    }
+
   }
 
 
@@ -52,9 +71,11 @@ const LoginPage = () => {
         <div className='login__form'>
           <h2>Sign In</h2>
           <form>
+
+
             <label>
               <p>Email:
-                <p className={isEmailWrong === false ? 'hidden' : 'red'}>
+                <p className={isEmailSyntaxWrong === false ? 'hidden' : 'red'}>
                   You must write your email correctly
                 </p>
               </p>
@@ -66,9 +87,11 @@ const LoginPage = () => {
                 }}
                 value={email} />
             </label>
+
+
             <label>
               <p>Password:
-                <p className={isPasswordWrong === false ? 'hidden' : 'red'}>
+                <p className={isPasswordSyntaxWrong === false ? 'hidden' : 'red'}>
                   You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter
                 </p>
               </p>
@@ -78,15 +101,21 @@ const LoginPage = () => {
                 onChange={e => setPassword(e.target.value)}
                 value={password} />
             </label>
+
+
             <button
               className='login__signInButton'
               onClick={e => {
-                validate(email, password, e)
+                validateAndSignIn(email, password, e)
               }}
             >
               Sign In
             </button>
+
+
             <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+
+
             <button
               type='button'
               className='login__createAccountButton'
@@ -94,6 +123,8 @@ const LoginPage = () => {
             >
               Create your Amazon account
             </button>
+
+
           </form>
         </div>
       </div>
