@@ -20,6 +20,21 @@ const productsInBasketReducer = (products = [], action) => {
   }
 };
 
+const userEmailReducer = (email = 'Hi User', action) => {
+
+  // handles CHANGE_USER action creator
+  if (action.type === "CHANGE_USER") {
+    email = action.payload.email
+    return email
+  }
+
+  // handles any other kind of action creator
+  else {
+    return email;
+  }
+};
+
 export default combineReducers({
   products: productsInBasketReducer,
+  userEmail: userEmailReducer,
 });

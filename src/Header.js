@@ -5,6 +5,8 @@ import MenuItem from "./MenuItem";
 import "./Header.css";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { connect } from "react-redux";
+import { auth } from './firebase'
+import { changeUserEmail } from "./actions/index";
 
 class Header extends Component {
   render() {
@@ -28,9 +30,11 @@ class Header extends Component {
           </form>
         </div>
         <div className="header__rightOptions">
-          <Link style={{ textDecoration: "none" }} to="/login">
-            <MenuItem topText="Hello, Marco" bottomText="Account & List" />
-          </Link>
+          <MenuItem topText={<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">{this.props.userEmail}</Link>} bottomText={<Link style={{ textDecoration: "none", color: 'white' }} to="/login"><p onClick={() => {
+            auth.signOut()
+            this.props.changeUserEmail('Hi User')
+          }
+          }>Sign Out</p></Link>} />
           <Link style={{ textDecoration: "none" }} to="/login">
             <MenuItem topText="Returns" bottomText="& Orders" />
           </Link>
@@ -49,7 +53,10 @@ class Header extends Component {
 const mapStateToProps = (state) => {
   return {
     products: state.products,
+    userEmail: state.userEmail
   };
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, {
+  changeUserEmail: changeUserEmail,
+})(Header);

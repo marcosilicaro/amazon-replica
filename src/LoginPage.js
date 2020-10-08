@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 import "./LoginPage.css";
 import { auth } from './firebase'
 import { useHistory } from 'react-router-dom'
+import { connect } from "react-redux";
+
+import { changeUserEmail } from "./actions/index";
 
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+  console.log(auth.currentUser)
+
   const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
@@ -21,11 +26,14 @@ const LoginPage = () => {
       signIn(email, password, e)
     } else if (isEmailSyntaxGood === false) {
       e.preventDefault()
+      setisPasswordSyntaxWrong(false)
       setisEmailSyntaxWrong(true)
+      document.getElementById("emailSubtext").innerHTML = "Email must be written correctly";
     } else if (isPasswordSyntaxGood === false) {
       e.preventDefault()
       setisEmailSyntaxWrong(false)
       setisPasswordSyntaxWrong(true)
+      document.getElementById("passwordSubtext").innerHTML = "Wrong password";
     }
   }
 
@@ -35,8 +43,19 @@ const LoginPage = () => {
     promise.then(
       respuesta => {
         history.push('/')
+        props.changeUserEmail(respuesta.user.email)
       },
-      error => console.log(error.message)
+      error => {
+        if (error.code === 'auth/wrong-password') {
+          setisEmailSyntaxWrong(false)
+          setisPasswordSyntaxWrong(true)
+          document.getElementById("passwordSubtext").innerHTML = "Wrong password";
+        } else {
+          setisEmailSyntaxWrong(true)
+          setisPasswordSyntaxWrong(false)
+          document.getElementById("emailSubtext").innerHTML = "Account does not exist";
+        }
+      }
     )
   }
 
@@ -51,11 +70,14 @@ const LoginPage = () => {
       signIn(email, password, e)
     } else if (isEmailSyntaxGood == false) {
       e.preventDefault()
+      setisPasswordSyntaxWrong(false)
       setisEmailSyntaxWrong(true)
+      document.getElementById("emailSubtext").innerHTML = "Email must be written correctly";
     } else if (isPasswordSyntaxGood == false) {
       e.preventDefault()
       setisEmailSyntaxWrong(false)
       setisPasswordSyntaxWrong(true)
+      document.getElementById("passwordSubtext").innerHTML = "You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter";
     }
 
   }
@@ -75,8 +97,7 @@ const LoginPage = () => {
 
             <label>
               <p>Email:
-                <p className={isEmailSyntaxWrong === false ? 'hidden' : 'red'}>
-                  You must write your email correctly
+                <p id='emailSubtext' className={isEmailSyntaxWrong === false ? 'hidden' : 'red'}>
                 </p>
               </p>
               <input
@@ -91,8 +112,8 @@ const LoginPage = () => {
 
             <label>
               <p>Password:
-                <p className={isPasswordSyntaxWrong === false ? 'hidden' : 'red'}>
-                  You must write your password between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter
+                <p id='passwordSubtext' className={isPasswordSyntaxWrong === false ? 'hidden' : 'red'}>
+
                 </p>
               </p>
               <input
@@ -125,6 +146,7 @@ const LoginPage = () => {
             </button>
 
 
+
           </form>
         </div>
       </div>
@@ -132,4 +154,12 @@ const LoginPage = () => {
   );
 }
 
-export default LoginPage;
+const mapStateToProps = (state) => {
+  return {
+    userEmail: state.userEmail,
+  };
+};
+
+export default connect(mapStateToProps, {
+  changeUserEmail: changeUserEmail,
+})(LoginPage);

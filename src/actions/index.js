@@ -19,3 +19,12 @@ export const eraseItemFromBasket = (title) => {
   };
 };
 
+export const changeUserEmail = (email) => {
+  return {
+    type: "CHANGE_USER",
+    payload: {
+      email: email
+    },
+  };
+};
+
