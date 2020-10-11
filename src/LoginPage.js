@@ -9,6 +9,7 @@ import { changeUserEmail } from "./actions/index";
 
 const LoginPage = (props) => {
   console.log(auth.currentUser)
+  console.log(props.userEmail)
 
   const history = useHistory()
   const [email, setEmail] = useState()
@@ -82,76 +83,99 @@ const LoginPage = (props) => {
 
   }
 
+  const beforeLogin = () => {
+    return (
+      <div className='login'>
+        <div className='login__container'>
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
+            className='login__logo'
+          />
+          <div className='login__form'>
+            <h2>Sign In</h2>
+            <form>
 
-  return (
-    <div className='login'>
-      <div className='login__container'>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
-          className='login__logo'
-        />
-        <div className='login__form'>
-          <h2>Sign In</h2>
-          <form>
 
-
-            <label>
-              <p>Email:
+              <label>
+                <p>Email:
                 <p id='emailSubtext' className={isEmailSyntaxWrong === false ? 'hidden' : 'red'}>
+                  </p>
                 </p>
-              </p>
-              <input
-                type='text'
-                name='email'
-                onChange={e => {
-                  setEmail(e.target.value)
-                }}
-                value={email} />
-            </label>
+                <input
+                  type='text'
+                  name='email'
+                  onChange={e => {
+                    setEmail(e.target.value)
+                  }}
+                  value={email} />
+              </label>
 
 
-            <label>
-              <p>Password:
+              <label>
+                <p>Password:
                 <p id='passwordSubtext' className={isPasswordSyntaxWrong === false ? 'hidden' : 'red'}>
 
+                  </p>
                 </p>
-              </p>
-              <input
-                type='text'
-                name='password'
-                onChange={e => setPassword(e.target.value)}
-                value={password} />
-            </label>
+                <input
+                  type='text'
+                  name='password'
+                  onChange={e => setPassword(e.target.value)}
+                  value={password} />
+              </label>
 
 
-            <button
-              className='login__signInButton'
-              onClick={e => {
-                validateAndSignIn(email, password, e)
-              }}
-            >
-              Sign In
+              <button
+                className='login__signInButton'
+                onClick={e => {
+                  validateAndSignIn(email, password, e)
+                }}
+              >
+                Sign In
             </button>
 
 
-            <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+              <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
 
 
-            <button
-              type='button'
-              className='login__createAccountButton'
-              onClick={e => createAccount(email, password, e)}
-            >
-              Create your Amazon account
+              <button
+                type='button'
+                className='login__createAccountButton'
+                onClick={e => createAccount(email, password, e)}
+              >
+                Create your Amazon account
             </button>
 
 
 
-          </form>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  const afterLogin = () => {
+    return (
+      <div className='login'>
+        <div className='login__container'>
+          <img
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
+            className='login__logo'
+          />
+          <div className='login__form'>
+            <h2>You're loggued in as {props.userEmail}</h2>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
+
+  return props.userEmail != '' ? afterLogin() : beforeLogin()
+
+
 }
 
 const mapStateToProps = (state) => {

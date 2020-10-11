@@ -20,7 +20,7 @@ const productsInBasketReducer = (products = [], action) => {
   }
 };
 
-const userEmailReducer = (email = 'Hi User', action) => {
+const userEmailReducer = (email = '', action) => {
 
   // handles CHANGE_USER action creator
   if (action.type === "CHANGE_USER") {

@@ -30,11 +30,33 @@ class Header extends Component {
           </form>
         </div>
         <div className="header__rightOptions">
-          <MenuItem topText={<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">{this.props.userEmail}</Link>} bottomText={<Link style={{ textDecoration: "none", color: 'white' }} to="/login"><p onClick={() => {
-            auth.signOut()
-            this.props.changeUserEmail('Hi User')
-          }
-          }>Sign Out</p></Link>} />
+
+          {this.props.userEmail ? (<MenuItem
+            topText=
+            {<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">{this.props.userEmail}</Link>}
+            bottomText=
+            {<Link style={{ textDecoration: "none", color: 'white' }} to="/login">
+              <p onClick={() => {
+                auth.signOut()
+                this.props.changeUserEmail('')
+              }
+              }>
+                Sign Out
+              </p>
+            </Link>}
+          />) : (<MenuItem
+            topText=
+            {<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">Hi User</Link>}
+            bottomText=
+            {<Link style={{ textDecoration: "none", color: 'white' }} to="/login">
+              <p>
+                Sign In
+              </p>
+            </Link>}
+          />)}
+
+
+
           <Link style={{ textDecoration: "none" }} to="/login">
             <MenuItem topText="Returns" bottomText="& Orders" />
           </Link>
