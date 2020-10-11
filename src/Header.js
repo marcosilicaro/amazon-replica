@@ -14,6 +14,35 @@ class Header extends Component {
 
   render() {
 
+
+
+    const returnLoggedBasket = (products) => {
+      let productAmount = 0
+      products.map(product => {
+        if (product.userId === auth.currentUser.uid) {
+          productAmount = ++productAmount
+        } else {
+          return 0
+        }
+      }
+      )
+      return productAmount
+    }
+
+    const returnNoUserBasket = (products) => {
+      let productAmount = 0
+      products.map(product => {
+        if (product.userId === 'noUser') {
+          productAmount = ++productAmount
+        } else {
+          return 0
+        }
+      }
+      )
+      return productAmount
+    }
+
+
     return (
       <div class="header__navbar">
         <div className="header__logoMenu">
@@ -51,7 +80,6 @@ class Header extends Component {
                 </p>
               </Link>
             }
-
           />) : (<MenuItem
             topText=
             {<p style={{ textDecoration: "none", color: 'grey' }} >Hi User</p>}
@@ -63,15 +91,18 @@ class Header extends Component {
             </Link>}
           />)}
 
-
-
           <Link style={{ textDecoration: "none" }} to="/login">
             <MenuItem topText="Returns" bottomText="& Orders" />
           </Link>
           <Link style={{ textDecoration: "none" }} to="/checkout">
+
             <div className="header__cart">
               <ShoppingBasketIcon />
-              <div className="header__cartItems">{this.props.products.length}</div>
+              <div className="header__cartItems">
+
+                {this.props.userEmail ? returnLoggedBasket(this.props.products) : returnNoUserBasket(this.props.products)}
+
+              </div>
             </div>
           </Link>
         </div>
