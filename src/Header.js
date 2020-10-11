@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import MenuItem from "./MenuItem";
 import "./Header.css";
@@ -9,7 +9,11 @@ import { auth } from './firebase'
 import { changeUserEmail } from "./actions/index";
 
 class Header extends Component {
+
+
+
   render() {
+
     return (
       <div class="header__navbar">
         <div className="header__logoMenu">
@@ -35,18 +39,22 @@ class Header extends Component {
             topText=
             {<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">{this.props.userEmail}</Link>}
             bottomText=
-            {<Link style={{ textDecoration: "none", color: 'white' }} to="/login">
-              <p onClick={() => {
-                auth.signOut()
-                this.props.changeUserEmail('')
-              }
-              }>
-                Sign Out
-              </p>
-            </Link>}
+            {
+              <Link style={{ textDecoration: "none", color: 'white' }} to="/">
+                <p
+                  onClick={() => {
+                    auth.signOut()
+                    this.props.changeUserEmail('')
+                  }
+                  }>
+                  Sign Out
+                </p>
+              </Link>
+            }
+
           />) : (<MenuItem
             topText=
-            {<Link style={{ textDecoration: "none", color: 'grey' }} to="/login">Hi User</Link>}
+            {<p style={{ textDecoration: "none", color: 'grey' }} >Hi User</p>}
             bottomText=
             {<Link style={{ textDecoration: "none", color: 'white' }} to="/login">
               <p>

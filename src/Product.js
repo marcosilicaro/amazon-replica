@@ -3,10 +3,13 @@ import "./Product.css";
 import { addItemToBasket } from "./actions/index";
 import { eraseItemFromBasket } from "./actions/index";
 import { connect } from "react-redux";
+import { auth } from './firebase'
 
 
 
 class Product extends Component {
+
+
 
   amountOfProductCalculation() {
     let suma = document.getElementById("productInBasket__amountOfProduct").value
@@ -36,7 +39,8 @@ class Product extends Component {
                   this.props.title,
                   this.props.price,
                   this.props.rating,
-                  this.props.img
+                  this.props.img,
+                  auth.currentUser ? auth.currentUser.uid : 'noUser'
                 )
               }
             >Add to Basket</button>

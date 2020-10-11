@@ -2,6 +2,8 @@
     display: grid;
     width:100%;
     justify-content: center;
+    height: 92vh !important;
+    background-color: lightgray;
 }
 
 .login img {
@@ -10,11 +12,12 @@
 
 .login__container{
 margin-top:3vh;
-background-color: lightgray;
 width: max-content;
 display: grid;
 grid-template-columns: 50vw;
 justify-items: center;
+grid-template-rows: min-content;
+grid-row-gap: 2vh;
 }
 
 .login__form form{

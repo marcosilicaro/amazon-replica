@@ -8,8 +8,6 @@ import { changeUserEmail } from "./actions/index";
 
 
 const LoginPage = (props) => {
-  console.log(auth.currentUser)
-  console.log(props.userEmail)
 
   const history = useHistory()
   const [email, setEmail] = useState()
@@ -171,11 +169,7 @@ const LoginPage = (props) => {
     );
   }
 
-
-
   return props.userEmail != '' ? afterLogin() : beforeLogin()
-
-
 }
 
 const mapStateToProps = (state) => {

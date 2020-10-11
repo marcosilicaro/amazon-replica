@@ -1,4 +1,4 @@
-export const addItemToBasket = (title, price, rating, img) => {
+export const addItemToBasket = (title, price, rating, img, userId) => {
   return {
     type: "ADD_ITEM",
     payload: {
@@ -6,6 +6,7 @@ export const addItemToBasket = (title, price, rating, img) => {
       price: price,
       rating: rating,
       img: img,
+      userId: userId
     },
   };
 };
