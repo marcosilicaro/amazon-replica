@@ -12,9 +12,23 @@ class Checkout extends React.Component {
   }
 
   subtotalCalculation(products) {
-    let suma = 0
-    products.map(product => suma = product.price + suma)
-    return suma
+    if (auth.currentUser === null) {
+      let suma = 0
+      products.map(product => {
+        if (product.userId === 'noUser') {
+          suma = suma + product.price
+        }
+      })
+      return suma
+    } else {
+      let suma = 0
+      products.map(product => {
+        if (product.userId === auth.currentUser.uid) {
+          suma = suma + product.price
+        }
+      })
+      return suma
+    }
   }
 
   render() {
@@ -28,7 +42,6 @@ class Checkout extends React.Component {
           <hr>
           </hr>
           <br />
-
           {
             this.props.products.map(
               product => {
@@ -62,14 +75,7 @@ class Checkout extends React.Component {
               }
             )
           }
-
-
-
-
-
-
         </div>
-
         <div className='checkout__subtotal'>
           <Subtotal
             subtotal={this.subtotalCalculation(this.props.products).toFixed(2)}
