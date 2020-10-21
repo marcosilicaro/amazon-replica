@@ -84,18 +84,16 @@ const LoginPage = (props) => {
   const beforeLogin = () => {
     return (
       <div className='login'>
+        <img
+          src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
+          className='login__logo'
+        />
         <div className='login__container'>
-          <img
-            src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1280px-Amazon_logo.svg.png'
-            className='login__logo'
-          />
           <div className='login__form'>
-            <h2>Sign In</h2>
+            <h2 className='title'>Sign In</h2>
             <form>
-
-
-              <label>
-                <p>Email:
+              <label style={{ paddingBottom: "10px" }}>
+                <p className='strong'>Email:
                 <p id='emailSubtext' className={isEmailSyntaxWrong === false ? 'hidden' : 'red'}>
                   </p>
                 </p>
@@ -107,23 +105,20 @@ const LoginPage = (props) => {
                   }}
                   value={email} />
               </label>
-
-
-              <label>
-                <p>Password:
+              <label style={{ paddingBottom: "10px" }}>
+                <p className='strong'>Password:
                 <p id='passwordSubtext' className={isPasswordSyntaxWrong === false ? 'hidden' : 'red'}>
 
                   </p>
                 </p>
                 <input
-                  type='text'
+                  type='password'
                   name='password'
                   onChange={e => setPassword(e.target.value)}
                   value={password} />
               </label>
-
-
               <button
+                style={{ marginBottom: "10px", backgroundColor: 'orange', borderWidth: '1px' }}
                 className='login__signInButton'
                 onClick={e => {
                   validateAndSignIn(email, password, e)
@@ -131,21 +126,15 @@ const LoginPage = (props) => {
               >
                 Sign In
             </button>
-
-
-              <p>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
-
-
+              <p style={{ marginBottom: "10px" }}>By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
               <button
+                style={{ marginBottom: "10px", backgroundColor: 'orange', borderWidth: '1px' }}
                 type='button'
                 className='login__createAccountButton'
                 onClick={e => createAccount(email, password, e)}
               >
                 Create your Amazon account
             </button>
-
-
-
             </form>
           </div>
         </div>
@@ -162,7 +151,7 @@ const LoginPage = (props) => {
             className='login__logo'
           />
           <div className='login__form'>
-            <h2>You're loggued in as {props.userEmail}</h2>
+            <h2>You're logged in as {props.userEmail}</h2>
           </div>
         </div>
       </div>
