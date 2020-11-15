@@ -9,7 +9,7 @@ import { changeUserEmail } from "./actions/index";
 
 const LoginPage = (props) => {
 
-  const historyy = useHistory()
+  const history = useHistory()
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [isEmailSyntaxWrong, setisEmailSyntaxWrong] = useState(false)
@@ -41,7 +41,7 @@ const LoginPage = (props) => {
     const promise = auth.signInWithEmailAndPassword(email, password)
     promise.then(
       respuesta => {
-        historyy.push('/')
+        history.push('/')
         props.changeUserEmail(respuesta.user.email)
       },
       error => {
